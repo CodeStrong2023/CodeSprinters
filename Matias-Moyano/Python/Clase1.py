@@ -114,7 +114,7 @@ frutas = tuple(frutasLista)
 # Eliminar tupla
 del frutas
 
-#Ejericio
+#Ejercicio
 # Dada la siguiente tupla
 tupla = (13,1,8,3,2,5,8)
 # Crear una lista que solo incluya los numeros menores a 5
