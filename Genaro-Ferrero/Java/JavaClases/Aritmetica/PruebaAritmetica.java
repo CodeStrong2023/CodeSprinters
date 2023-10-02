@@ -9,6 +9,6 @@ public class PruebaAritmetica {
      System.out.println("Resultado =" + resultado);
 
      resultado = aritmetica1.sumarConArgumentos(12, 16);
-     System.out.println("Resultado usando Argumentos" + resultado);
+     System.out.println("Resultado usando Argumentos = " + resultado);
     }
 }
