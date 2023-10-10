@@ -4,6 +4,19 @@ public class Aritmetica {
     int a;
     int b;
 
+    // Constructor es un metodo especial 
+    public Aritmetica() {
+        System.out.println("Se esta ejecutando este constructor número  uno");
+    }
+
+    // Constructor 2
+    public Aritmetica(int a, int b) {
+        this.a = a;
+        this.b = b ;
+        System.out.println("Se esta ejecutando este constructor número dos");
+    }
+
+
     // Método para sumar e imprimir el resultado
     public void sumarNumeros() {
         int resultado = a + b;

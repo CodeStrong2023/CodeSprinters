@@ -1,8 +1,8 @@
 
 public class ClaseN4_Persona {
     // Atributos de la clase (Caracteristicas)
-    String nombre;
-    String apellido;
+     public String nombre;
+     public String apellido;
 
     // Metodo  de la clase (Acciones) 
     public void obtenerInformacion (){
