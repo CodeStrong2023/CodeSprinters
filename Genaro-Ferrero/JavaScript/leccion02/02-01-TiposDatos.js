@@ -43,3 +43,16 @@ class Persona{
     }
 }
 console.log(typeof Persona)
+
+// Tipo de dato undefined
+var x = undefined;
+console.log(typeof x);
+
+// null: ausencia de valor
+var y = null; // no tiene tipo de dato..pero su origen es object 
+console.log(typeof y);
+
+// Tipo de dato array y Empy String
+var autos = ["Citroen","audi","ferraro","bmw"]
+console.log(autos);
+console.log(typeof autos)
