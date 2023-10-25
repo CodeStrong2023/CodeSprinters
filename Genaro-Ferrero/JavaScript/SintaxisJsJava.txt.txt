@@ -50,3 +50,7 @@ Operadores Relacionales
 >
 <=
 >=
+
+Operadores logicos 
+and -> &&
+or  -> 

@@ -29,3 +29,10 @@ console.log(z)
 
 let_1num=31; // No usar numeros para iniciar variables
 // No utilizar palabras reservadas
+
+
+let nombre3 = "Juan";
+console.log(nombre3)
+
+const apellido3= "Lepes"; // No puede reasignarse su valor
+
