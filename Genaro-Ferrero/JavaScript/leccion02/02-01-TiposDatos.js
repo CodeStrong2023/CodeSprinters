@@ -56,3 +56,8 @@ console.log(typeof y);
 var autos = ["Citroen","audi","ferraro","bmw"]
 console.log(autos);
 console.log(typeof autos)
+
+// Como hacer una cadena vacia 
+var z = " ";
+console.log(z)
+console.log(typeof z)
