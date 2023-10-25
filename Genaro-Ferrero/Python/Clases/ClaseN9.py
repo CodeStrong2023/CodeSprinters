@@ -25,7 +25,7 @@ class Aritmetica:
     
 aritmetica1 = Aritmetica(7,9)
 print(aritmetica1.sumar()) 
-print(f" La resta: {aritmetica1.resta()}")
+print(f"La resta: {aritmetica1.resta()}")
 print(f"La multiplicacion: {aritmetica1.multiplicacion()}")
 print(f"La division: {aritmetica1.division():.2f}")
   
