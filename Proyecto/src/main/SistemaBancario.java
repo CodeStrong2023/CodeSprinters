@@ -7,9 +7,23 @@ import java.util.ArrayList;
 
 public class SistemaBancario{
     private static Scanner scanner = new Scanner(System.in);
+    // declaramos un array donde se van a guardar las cuentas bancarias
     private static ArrayList<CuentaBancaria> cuentas = new ArrayList<>();
-    
-    public static void main(String[] args) {
+    /* 
+     * [ cuenta1, cuenta2, cuenta3, ...]
+     * cuenta1 : {
+     * nombreUsuario: "usuario1",
+     * contra: "contra1",
+     * nombreReal: "nombreReal1",
+     * DNI: "DNI1",
+     * sexo: "sexo1",
+     * edad: 1,
+     * dinero: 1.0,
+     * cbu: "cbu1"
+     * }
+     */
+    //funcion main que se va a ejecutar cada vez que se inicie el programa
+     public static void main(String[] args) {
         int opcion = 0;
         while (opcion != 6) {
             mostrarMenu();
@@ -87,45 +101,40 @@ public class SistemaBancario{
         System.out.println("|  ------------------------------------------------------------------- |");
         System.out.println("|                              Crear cuenta                            |");
         System.out.println("|  ------------------------------------------------------------------  |");
-        
     
         // Generador de CBU
         SecureRandom random = new SecureRandom();
-        BigInteger bigInt = new BigInteger(128, random);
-
-        String CBU = bigInt.toString(36).toUpperCase();
-
-        // Ajustar la longitud a 22 caracteres (agregar ceros a la izquierda si es necesario)
-        if (CBU.length() < 22) {
-            int diferencia = 22 - CBU.length();
-            String ceros = "0".repeat(diferencia);
-            CBU = ceros + CBU;
-        } else if (CBU.length() > 22) {
-            // Si la cadena es demasiado larga, recortarla
-            CBU = CBU.substring(0, 22);
-        }
+        BigInteger bigInt = new BigInteger(70, random); // 70 bits para asegurar 22 dígitos en la mayoría de los casos
         
-
-
-        for (int i = 0; i < cuentas.length; i++) {
-            CuentaBancaria cuenta = new CuentaBancaria();
-            System.out.println("| Ingrese su Nombre de Usuario"+(i+1)+": ");
-            CuentaBancaria.setNombreUsuario(scanner.nextLine());
-            System.out.println("| Ingrese su Nombre Completo"+(i+1)+": ");
-            CuentaBancaria.setNombreReal(scanner.nextLine());
-            System.out.println("| Ingrese su Contraseña"+(i+1)+": ");
-            CuentaBancaria.setContra(scanner.nextLine());
-            System.out.println("| Ingrese su DNI"+(i+1)+": ");
-            CuentaBancaria.setDNI(scanner.nextLine());
-            System.out.println("| Ingrese su Sexo"+(i+1)+": ");
-            CuentaBancaria.setSexo(scanner.nextLine());
-            System.out.println("| Ingrese su Edad "+(i+1)+": ");
-            CuentaBancaria.setEdad(scanner.nextInt());
-            CuentaBancaria.setDinero(0);
-            CuentaBancaria.setcbu(CBU);
-        }
+        String CBU = bigInt.toString(10); // Convertir a base 10 para obtener solo números
         
+        // Ajustar la longitud a 22 dígitos (agregar ceros a la izquierda si es necesario)
+        while (CBU.length() < 22) {
+            CBU = "0" + CBU;
+        }
+    
+    
+        CuentaBancaria cuenta = new CuentaBancaria();
+        scanner.nextLine(); // Consumir el \n restante después de scanner.nextInt()
+    
+        System.out.println("| Ingrese su Nombre de Usuario: ");
+        cuenta.setNombreUsuario(scanner.nextLine());
+        System.out.println("| Ingrese su Nombre Completo: ");
+        cuenta.setNombreReal(scanner.nextLine());
+        System.out.println("| Ingrese su Contraseña: ");
+        cuenta.setContra(scanner.nextLine());
+        System.out.println("| Ingrese su DNI: ");
+        cuenta.setDNI(scanner.nextLine());
+        System.out.println("| Ingrese su Sexo: ");
+        cuenta.setSexo(scanner.nextLine());
+        System.out.println("| Ingrese su Edad: ");
+        cuenta.setEdad(scanner.nextInt());
+        cuenta.setDinero(0);
+        cuenta.setCbu(CBU);
+        
+        cuentas.add(cuenta); // Agregar la cuenta creada al ArrayList
     }
+    
 
     private static void depositarDinero() {
         
@@ -140,6 +149,27 @@ public class SistemaBancario{
     }
 
     private static void mostrarDatosCuenta() {
+        System.out.println("|  ------------------------------------------------------------------- |");
+        System.out.println("|                      Mostrar Datos de la Cuenta                      |");
+        System.out.println("|  ------------------------------------------------------------------  |");
         
+        System.out.println("| Ingrese su Nombre de Usuario: ");
+        String usuarioInput = scanner.next();
+        System.out.println("| Ingrese su Contraseña: ");
+        String contraInput = scanner.next();
+        
+        // Buscando la cuenta en el ArrayList
+        for (CuentaBancaria cuenta : cuentas) {
+            if (cuenta.getNombreUsuario().equals(usuarioInput) && cuenta.getContra().equals(contraInput)) {
+                System.out.println(cuenta.toString());
+                return;
+            }
+        }
+        
+        // Si no encuentra la cuenta, mostrar mensaje de error
+        System.out.println("|  ------------------------------------------------------------------- |");
+        System.out.println("|            No se encontró una cuenta con esos datos                  |");
+        System.out.println("|  ------------------------------------------------------------------  |");
     }
+    
 }

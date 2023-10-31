@@ -3,9 +3,6 @@ package OpcionesMenu;
 
 public class CuentaBancaria {
 
-    public static void setcbu(String CBU) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
     private String nombreUsuario;
     private String contra;
@@ -14,11 +11,14 @@ public class CuentaBancaria {
     private String sexo;
     private int edad;
     private double dinero;
-    private int cbu;
+    private String cbu;
 
+    // Constructor por defecto
+    public CuentaBancaria() {
+    }
     // Constructor completo
-
-    public CuentaBancaria( String nombreUsuario, String contra, String nombreReal, String DNI, String sexo, int edad, double dinero, int cbu) {
+    
+    public CuentaBancaria( String nombreUsuario, String contra, String nombreReal, String DNI, String sexo, int edad, double dinero, String cbu) {
         this.nombreUsuario = nombreUsuario;
         this.contra = contra;
         this.nombreReal = nombreReal;
@@ -33,32 +33,32 @@ public class CuentaBancaria {
     public String getNombreUsuario() {
         return this.nombreUsuario;
     }
-
+    
     public String getContra() {
         return this.contra;
     }
-
+    
     public String getNombreReal() {
         return this.nombreReal;
     }
-
+    
     public String getDNI() {
         return this.DNI;
     }
-
+    
     public String getSexo() {
         return this.sexo;
     }
-
+    
     public int getEdad () {
         return this.edad;
     }
-
+    
     public double getDinero() {
         return this.dinero;
     }
-
-    public int getCbu() {
+    
+    public String getCbu() {
         return this.cbu;
     }
     
@@ -67,11 +67,14 @@ public class CuentaBancaria {
     public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
     }
-
+    
     public void setContra(String contra) {
         this.contra = contra;
     }
-
+    public static void setcbu(String CBU) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
     public void setNombreReal(String nombreReal) {
         this.nombreReal = nombreReal;
     }
@@ -92,7 +95,7 @@ public class CuentaBancaria {
         this.dinero = dinero;
     }
 
-    public void setCbu(int cbu) {
+    public void setCbu(String cbu) {
         this.cbu = cbu;
     }
      // To String
@@ -115,4 +118,4 @@ public class CuentaBancaria {
     
     
    
-    }
+}
