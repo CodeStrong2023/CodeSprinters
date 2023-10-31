@@ -50,7 +50,7 @@ public class CuentaBancaria {
         return this.sexo;
     }
 
-    public int getEdad() {
+    public int getEdad () {
         return this.edad;
     }
 

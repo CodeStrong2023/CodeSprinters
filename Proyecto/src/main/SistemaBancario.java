@@ -3,10 +3,12 @@ import OpcionesMenu.CuentaBancaria;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class SistemaBancario{
     private static Scanner scanner = new Scanner(System.in);
-    private static CuentaBancaria cuentaActual;
+    private static ArrayList<CuentaBancaria> cuentas = new ArrayList<>();
+    
     public static void main(String[] args) {
         int opcion = 0;
         while (opcion != 6) {
@@ -86,6 +88,7 @@ public class SistemaBancario{
         System.out.println("|                              Crear cuenta                            |");
         System.out.println("|  ------------------------------------------------------------------  |");
         
+    
         // Generador de CBU
         SecureRandom random = new SecureRandom();
         BigInteger bigInt = new BigInteger(128, random);
@@ -102,7 +105,7 @@ public class SistemaBancario{
             CBU = CBU.substring(0, 22);
         }
         
-        CuentaBancaria[] cuentas = new CuentaBancaria[100];
+
 
         for (int i = 0; i < cuentas.length; i++) {
             CuentaBancaria cuenta = new CuentaBancaria();
