@@ -12,7 +12,7 @@ public class CuentaBancaria {
     private int edad;
     private double dinero;
     private String cbu;
-
+    
     // Constructor por defecto
     public CuentaBancaria() {
     }
@@ -99,22 +99,21 @@ public class CuentaBancaria {
         this.cbu = cbu;
     }
      // To String
-
-    @Override
+     // Esto sera una salida para mostrar nuestra cuenta creada ...
+     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("|                       Cuenta Creada con Exito                        |");
-        sb.append("| Nombre de Usuario: ").append(nombreUsuario);
-        sb.append("| Contraseña: ").append(contra);
-        sb.append("| Nombre: ").append(nombreReal);
-        sb.append("| D.N.I: ").append(DNI);
-        sb.append("| Sexo: ").append(sexo);
-        sb.append("| Edad: ").append(edad);
-        sb.append("| Saldo: ").append(dinero);
-        sb.append("| C.B.U: ").append(cbu);
-        return sb.toString();
-    }
-    
+        sb.append("|                       Cuenta Creada con Éxito                        |\n");
+        sb.append("| Nombre de Usuario: ").append(nombreUsuario).append("\n");
+        sb.append("| Contraseña: ").append(contra).append("\n");
+        sb.append("| Nombre: ").append(nombreReal).append("\n");
+        sb.append("| D.N.I: ").append(DNI).append("\n");
+        sb.append("| Sexo: ").append(sexo).append("\n");
+        sb.append("| Edad: ").append(edad).append("\n");
+        sb.append("| Saldo: ").append(dinero).append("\n");
+        sb.append("| C.B.U: ").append(cbu).append("\n");
+    return sb.toString();
+}
     
     
    
