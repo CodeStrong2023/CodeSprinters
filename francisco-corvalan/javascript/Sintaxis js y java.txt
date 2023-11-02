@@ -48,3 +48,7 @@ Operadores Relacionales
 >
 <=
 >=
+
+Operadores logicos
+And -> && Doble aspersan
+Or ->
