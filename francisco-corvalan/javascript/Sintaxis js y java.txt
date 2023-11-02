@@ -36,3 +36,15 @@ Operador de aumento
 
 Operador de Decremento
 -- 
+Ejemplo: let z = --0; //PreDrecremento
+Ejemplo: z = a--; //PosDecremento
+
+Operador distinto, diferente(Boolean)
+!= Comprueba valores sin revisar el tipo
+!== Comprueba el valor y tambien el tipo
+
+Operadores Relacionales
+<
+>
+<=
+>=
