@@ -103,7 +103,7 @@ public class CuentaBancaria {
      @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("|                       Cuenta Creada con Éxito                        |\n");
+        sb.append("|                       Datos de la Cuenta                             |\n");
         sb.append("| Nombre de Usuario: ").append(nombreUsuario).append("\n");
         sb.append("| Contraseña: ").append(contra).append("\n");
         sb.append("| Nombre: ").append(nombreReal).append("\n");
