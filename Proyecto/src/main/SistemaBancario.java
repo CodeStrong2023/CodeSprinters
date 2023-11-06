@@ -25,6 +25,7 @@ public class SistemaBancario{
     //funcion main que se va a ejecutar cada vez que se inicie el programa
      public static void main(String[] args) {
         int opcion = 0;
+        double saldo = 1000;
         while (opcion != 6) {
             mostrarMenu();
             opcion = scanner.nextInt();
@@ -218,6 +219,12 @@ public class SistemaBancario{
         return null; // Si no se encuentra la cuenta
     }
     
+     //método ingreso de dinero mayor que cero
+     private static boolean esMontoValido(double dinero) {
+     return dinero > 0;
+     }
+ 
+
    public static void crearCuenta() {
     System.out.println("|  ------------------------------------------------------------------- |");
     System.out.println("|                              Crear cuenta                            |");
@@ -322,12 +329,36 @@ public class SistemaBancario{
 }
 
     private static void depositarDinero() {
-        
+    System.out.println("|  ------------------------------------------------------------------- |");
+    System.out.println("|                              Depositar Dinero                        |");
+    System.out.println("|  ------------------------------------------------------------------  |");
+    
+    // Mostrar el saldo
+    System.out.println("Su Saldo Actual es :" + saldo + "Dolares");
+    
+    // Pedimos el dinero a Depositar
+    System.out.println("| Ingrese Cantidad de Dinero a depositar: ");
+    double dinero = scanner.nextInt();
+    
+    // En el ciclo While indicamos que el valor dado por el usuario debe ser mayor a cero
+    while (!esMontoValido(dinero)) {
+    if (dinero < 0) {
+        System.out.println("| La aplicación no acepta monto menores a cero.");
+        System.out.println("| Ingrese otro Monto a depositar : ");
+        dinero = scanner.nextInt();
+    } else {
+            saldo = saldo + dinero; 
     }
+    // Mostramos el saldo final
+   System.out.println("Su Saldo Actual es :" + saldo + "Dolares");
+    }
+        
 
     private static void retirarDinero() {
         
     }
+        
+   
 
     private static void transferirDinero() {
        
