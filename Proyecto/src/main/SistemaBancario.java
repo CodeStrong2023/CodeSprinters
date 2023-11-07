@@ -150,11 +150,7 @@ public class SistemaBancario{
     // Metodo para pedir una edad mayor a 16 y menor de 100 años 
     private static boolean esEdadValida(int edad) {
     return edad >= 16 && edad < 100;
-    }
-    // Metodo para limpiar pantalla 
-    public static void clearScreen() {
-    System.out.print("\033[H\033[2J");
-    System.out.flush();
+    
     }
     
     // Metodo para inicializar seccion 
@@ -321,7 +317,7 @@ public class SistemaBancario{
     
     // Esta linea agrega la cuenta a la Arrayd cuentas.
     cuentas.add(cuenta); 
-    clearScreen();
+    
     // Le decimos al Usuario que su cuenta fue creada con exito 
     System.out.println(cuenta.toString());
     System.out.println("|  ------------------------------------------------------------------- |");
@@ -335,37 +331,35 @@ public class SistemaBancario{
     System.out.println("|  ------------------------------------------------------------------- |");
     System.out.println("|                              Depositar Dinero                        |");
     System.out.println("|  ------------------------------------------------------------------  |");
-    
-/*     // Mostrar el saldo
-    System.out.println("Su Saldo Actual es :" + saldo + "Dolares");
-    
-    // Pedimos el dinero a Depositar
-    System.out.println("| Ingrese Cantidad de Dinero a depositar: ");
-    double dinero = scanner.nextInt();
-    
-    // En el ciclo While indicamos que el valor dado por el usuario debe ser mayor a cero
-    while (!esMontoValido(dinero)) {
-    if (dinero < 0) {
-        System.out.println("| La aplicación no acepta monto menores a cero.");
-        System.out.println("| Ingrese otro Monto a depositar : ");
-        dinero = scanner.nextInt();
-    } else {
-            saldo = saldo + dinero; 
-    }
-    // Mostramos el saldo final
-   System.out.println("Su Saldo Actual es :" + saldo + "Dolares");
-    } */
+    // Iniciar sesión en la cuenta
+    CuentaBancaria cuenta = iniciarSesion();
+
+    System.out.println("| Ingrese monto a depositar:");
+    double montoDeposito = scanner.nextDouble();
+
+    // Validar que el monto sea mayor a 0
+    if(montoDeposito <= 0) {
+    System.out.println("| Monto inválido");
+    return;
+ }
+
+    // Sumar monto depositado al saldo actual
+    cuenta.setDinero(cuenta.getDinero() + montoDeposito);
+
+    // Mostrar mensaje de éxito 
+    System.out.println("| Depósito exitoso!");
+    System.out.println("| Nuevo saldo: " + cuenta.getDinero());
     }
         
 
     private static void retirarDinero() {
-        
+    
     }
         
    
 
     private static void transferirDinero() {
-       
+
     }
 
 
