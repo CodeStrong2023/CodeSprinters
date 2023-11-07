@@ -25,10 +25,13 @@ public class SistemaBancario{
     //funcion main que se va a ejecutar cada vez que se inicie el programa
      public static void main(String[] args) {
         int opcion = 0;
-        double saldo = 1000;
+        //mientras el numero ingresado sea distinto a 6
         while (opcion != 6) {
+            //mostrar menu
             mostrarMenu();
+            //leer opcion
             opcion = scanner.nextInt();
+            //procesar
             procesarOpcion(opcion);
         }
     }
@@ -333,7 +336,7 @@ public class SistemaBancario{
     System.out.println("|                              Depositar Dinero                        |");
     System.out.println("|  ------------------------------------------------------------------  |");
     
-    // Mostrar el saldo
+/*     // Mostrar el saldo
     System.out.println("Su Saldo Actual es :" + saldo + "Dolares");
     
     // Pedimos el dinero a Depositar
@@ -351,6 +354,7 @@ public class SistemaBancario{
     }
     // Mostramos el saldo final
    System.out.println("Su Saldo Actual es :" + saldo + "Dolares");
+    } */
     }
         
 
