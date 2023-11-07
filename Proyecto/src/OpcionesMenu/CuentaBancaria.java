@@ -12,13 +12,17 @@ public class CuentaBancaria {
     private int edad;
     private double dinero;
     private String cbu;
+    private double saldo;
+    
+    
+    
     
     // Constructor por defecto
     public CuentaBancaria() {
     }
     // Constructor completo
     
-    public CuentaBancaria( String nombreUsuario, String contra, String nombreReal, String DNI, String sexo, int edad, double dinero, String cbu) {
+    public CuentaBancaria( String nombreUsuario, String contra, String nombreReal, String DNI, String sexo, int edad, double dinero,double saldo, String cbu) {
         this.nombreUsuario = nombreUsuario;
         this.contra = contra;
         this.nombreReal = nombreReal;
@@ -27,6 +31,9 @@ public class CuentaBancaria {
         this.edad = edad;
         this.dinero = dinero;
         this.cbu = cbu;
+        this.saldo = saldo;
+      
+        
     }
     
     // Getters 
@@ -56,6 +63,10 @@ public class CuentaBancaria {
     
     public double getDinero() {
         return this.dinero;
+    }
+    
+    public double getSaldo() {
+    return this.saldo;
     }
     
     public String getCbu() {
@@ -95,6 +106,10 @@ public class CuentaBancaria {
         this.dinero = dinero;
     }
 
+     public void setSaldo (double saldo) {
+        this.saldo = saldo;
+        
+    }
     public void setCbu(String cbu) {
         this.cbu = cbu;
     }
@@ -103,7 +118,7 @@ public class CuentaBancaria {
      @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("|                       Cuenta Creada con Éxito                        |\n");
+        sb.append("|                       Datos de la Cuenta                             |\n");
         sb.append("| Nombre de Usuario: ").append(nombreUsuario).append("\n");
         sb.append("| Contraseña: ").append(contra).append("\n");
         sb.append("| Nombre: ").append(nombreReal).append("\n");

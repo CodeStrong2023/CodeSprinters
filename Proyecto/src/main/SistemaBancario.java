@@ -25,9 +25,13 @@ public class SistemaBancario{
     //funcion main que se va a ejecutar cada vez que se inicie el programa
      public static void main(String[] args) {
         int opcion = 0;
+        //mientras el numero ingresado sea distinto a 6
         while (opcion != 6) {
+            //mostrar menu
             mostrarMenu();
+            //leer opcion
             opcion = scanner.nextInt();
+            //procesar
             procesarOpcion(opcion);
         }
     }
@@ -147,7 +151,83 @@ public class SistemaBancario{
     private static boolean esEdadValida(int edad) {
     return edad >= 16 && edad < 100;
     }
+    // Metodo para limpiar pantalla 
+    public static void clearScreen() {
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
+    }
     
+    // Metodo para inicializar seccion 
+    /*
+     * Con este podremos iniciar sesion a una cuenta especifica 
+     * Lo utilizaremos en muchas opciones 
+     * Conciste en un Do que pide un nombre de usuario 
+     * y lo ingresa al Metodo buscarCuentaPorUsuario 
+     * si encuentra un usuario continua pidiendo la contraseña
+     * si no la encuentra avisa que el usuario es incorrecto y inicia nuevamente 
+     * Luego pide la contraseña 
+     * si la contraseña no es igual a la correspondiente con la cuentra encontrada
+     * avisa que la contraseña es incorrecta y pide nuevamente el usuario
+     * si la contraseña es correcta da inicio a la sesión indicando Sesion es iniciada con exito
+     */
+
+    private static CuentaBancaria iniciarSesion() {
+        do {
+            System.out.println("|  ------------------------------------------------------------------- |");
+            System.out.println("|                     Iniciar Sesión en su Cuenta                       |");
+            System.out.println("|  ------------------------------------------------------------------  |");
+    
+            System.out.println("| Ingrese su Nombre de Usuario: ");
+            String usuarioInput = scanner.next();
+    
+            // Buscando la cuenta en el ArrayList
+            CuentaBancaria cuentaEncontrada = buscarCuentaPorUsuario(usuarioInput);
+    
+            if (cuentaEncontrada == null) {
+                System.out.println("|  ------------------------------------------------------------------- |");
+                System.out.println("|           Nombre de Usuario Incorrecto. Intente nuevamente           |");
+                System.out.println("|  ------------------------------------------------------------------  |");
+                continue;
+            }
+    
+            System.out.println("| Ingrese su Contraseña: ");
+            String contraInput = scanner.next();
+    
+            if (cuentaEncontrada.getContra().equals(contraInput)) {
+                System.out.println("|  ------------------------------------------------------------------- |");
+                System.out.println("|             Sesión Iniciada con Éxito                                |");
+                System.out.println("|  ------------------------------------------------------------------  |");
+                return cuentaEncontrada;
+            } else {
+                System.out.println("|  ------------------------------------------------------------------- |");
+                System.out.println("|             Contraseña Incorrecta. Intente nuevamente                |");
+                System.out.println("|  ------------------------------------------------------------------  |");
+                continue;
+            }
+        } while (true);
+    }
+
+    // Metodo buscar cuenta por Usuario 
+    /*
+     * Este metodo  es utilizado en el metodo InicialSesion y sirve el nombre de usuario 
+     * en el arrayd cuenta y verificar si estos son iguales o no 
+     * si No Encuentra la cuenta retornara un Null 
+     */
+    private static CuentaBancaria buscarCuentaPorUsuario(String nombreUsuario) {
+        for (CuentaBancaria cuenta : cuentas) {
+            if (cuenta.getNombreUsuario().equals(nombreUsuario)) {
+                return cuenta;
+            }
+        }
+        return null; // Si no se encuentra la cuenta
+    }
+    
+     //método ingreso de dinero mayor que cero
+     private static boolean esMontoValido(double dinero) {
+     return dinero > 0;
+     }
+ 
+
    public static void crearCuenta() {
     System.out.println("|  ------------------------------------------------------------------- |");
     System.out.println("|                              Crear cuenta                            |");
@@ -241,49 +321,67 @@ public class SistemaBancario{
     
     // Esta linea agrega la cuenta a la Arrayd cuentas.
     cuentas.add(cuenta); 
-    
+    clearScreen();
     // Le decimos al Usuario que su cuenta fue creada con exito 
     System.out.println(cuenta.toString());
     System.out.println("|  ------------------------------------------------------------------- |");
     System.out.println("|              Presione cualquier tecla para continuar...              |");
     System.out.println("|  ------------------------------------------------------------------- |");
+ 
     scanner.nextLine(); // Consumir el \n restante después de scanner.nextInt()
 }
 
-   
     private static void depositarDinero() {
-        
+    System.out.println("|  ------------------------------------------------------------------- |");
+    System.out.println("|                              Depositar Dinero                        |");
+    System.out.println("|  ------------------------------------------------------------------  |");
+    
+/*     // Mostrar el saldo
+    System.out.println("Su Saldo Actual es :" + saldo + "Dolares");
+    
+    // Pedimos el dinero a Depositar
+    System.out.println("| Ingrese Cantidad de Dinero a depositar: ");
+    double dinero = scanner.nextInt();
+    
+    // En el ciclo While indicamos que el valor dado por el usuario debe ser mayor a cero
+    while (!esMontoValido(dinero)) {
+    if (dinero < 0) {
+        System.out.println("| La aplicación no acepta monto menores a cero.");
+        System.out.println("| Ingrese otro Monto a depositar : ");
+        dinero = scanner.nextInt();
+    } else {
+            saldo = saldo + dinero; 
     }
+    // Mostramos el saldo final
+   System.out.println("Su Saldo Actual es :" + saldo + "Dolares");
+    } */
+    }
+        
 
     private static void retirarDinero() {
         
     }
+        
+   
 
     private static void transferirDinero() {
        
     }
 
+
     private static void mostrarDatosCuenta() {
-        System.out.println("|  ------------------------------------------------------------------- |");
-        System.out.println("|                      Mostrar Datos de la Cuenta                      |");
-        System.out.println("|  ------------------------------------------------------------------  |");
-        
-        System.out.println("| Ingrese su Nombre de Usuario: ");
-        String usuarioInput = scanner.next();
-        System.out.println("| Ingrese su Contraseña: ");
-        String contraInput = scanner.next();
-        
-        // Buscando la cuenta en el ArrayList
-        for (CuentaBancaria cuenta : cuentas) {
-            if (cuenta.getNombreUsuario().equals(usuarioInput) && cuenta.getContra().equals(contraInput)) {
-                System.out.println(cuenta.toString());
-                return;
-            }
+        // Llamamos al metodo Cuenta 
+        CuentaBancaria cuenta = iniciarSesion();
+        // Si la cuenta es encontrada damos la siguiente salida que muestra el to string de la Cuenta Bacaria 
+        if (cuenta != null) {
+         System.out.println("|  ------------------------------------------------------------------- |");
+         System.out.println("|                  Cuenta Encontrada con Éxito                         |");
+         System.out.println(cuenta.toString());
+        } else {
+            // Su la cuenta no es encontrada damos esta salida y volvemos a repetir el proceso 
+            System.out.println("|  ------------------------------------------------------------------- |");
+            System.out.println("|     No se encontró una cuenta con esos datos.                        |");
+            System.out.println("|  ------------------------------------------------------------------  |");
         }
-        
-        // Si no encuentra la cuenta, mostrar mensaje de error
-        System.out.println("|  ------------------------------------------------------------------- |");
-        System.out.println("|            No se encontró una cuenta con esos datos                  |");
-        System.out.println("|  ------------------------------------------------------------------  |");
     }
 }
