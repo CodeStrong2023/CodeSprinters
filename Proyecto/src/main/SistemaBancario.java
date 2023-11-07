@@ -353,7 +353,27 @@ public class SistemaBancario{
         
 
     private static void retirarDinero() {
-    
+    System.out.println("|  ------------------------------------------------------------------- |");
+    System.out.println("|                              Retirar Dinero                          |");
+    System.out.println("|  ------------------------------------------------------------------  |");
+        // Iniciar sesión en la cuenta
+    CuentaBancaria cuenta = iniciarSesion();
+
+    System.out.println("| Ingrese monto a retirar:");
+    double montoRetiro = scanner.nextDouble();
+
+    // Validar que hay fondos suficientes
+    if(cuenta.getDinero() < montoRetiro) {
+    System.out.println("| Fondos insuficientes");
+    return; 
+  }
+
+    // Restar monto retirado del saldo
+    cuenta.setDinero(cuenta.getDinero() - montoRetiro);
+
+    // Mostrar mensaje de éxito
+    System.out.println("| Retiro exitoso!");
+    System.out.println("| Nuevo saldo: " + cuenta.getDinero());
     }
         
    
