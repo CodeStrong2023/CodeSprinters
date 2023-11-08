@@ -150,11 +150,7 @@ public class SistemaBancario{
     // Metodo para pedir una edad mayor a 16 y menor de 100 años 
     private static boolean esEdadValida(int edad) {
     return edad >= 16 && edad < 100;
-    }
-    // Metodo para limpiar pantalla 
-    public static void clearScreen() {
-    System.out.print("\033[H\033[2J");
-    System.out.flush();
+    
     }
     
     // Metodo para inicializar seccion 
@@ -321,7 +317,7 @@ public class SistemaBancario{
     
     // Esta linea agrega la cuenta a la Arrayd cuentas.
     cuentas.add(cuenta); 
-    clearScreen();
+    
     // Le decimos al Usuario que su cuenta fue creada con exito 
     System.out.println(cuenta.toString());
     System.out.println("|  ------------------------------------------------------------------- |");
@@ -335,37 +331,90 @@ public class SistemaBancario{
     System.out.println("|  ------------------------------------------------------------------- |");
     System.out.println("|                              Depositar Dinero                        |");
     System.out.println("|  ------------------------------------------------------------------  |");
-    
-/*     // Mostrar el saldo
-    System.out.println("Su Saldo Actual es :" + saldo + "Dolares");
-    
-    // Pedimos el dinero a Depositar
-    System.out.println("| Ingrese Cantidad de Dinero a depositar: ");
-    double dinero = scanner.nextInt();
-    
-    // En el ciclo While indicamos que el valor dado por el usuario debe ser mayor a cero
-    while (!esMontoValido(dinero)) {
-    if (dinero < 0) {
-        System.out.println("| La aplicación no acepta monto menores a cero.");
-        System.out.println("| Ingrese otro Monto a depositar : ");
-        dinero = scanner.nextInt();
-    } else {
-            saldo = saldo + dinero; 
-    }
-    // Mostramos el saldo final
-   System.out.println("Su Saldo Actual es :" + saldo + "Dolares");
-    } */
+    // Iniciamos sesion en nuestra cuenta
+    CuentaBancaria cuenta = iniciarSesion();
+
+    System.out.println("| Ingrese monto a depositar:");
+    double montoDeposito = scanner.nextDouble();
+
+    // Confirmamos que el monto no sea 0
+    if(montoDeposito <= 0) {
+    System.out.println("| Monto inválido");
+    return;
+ }
+
+    // Sumamos el monto depositado al saldo actual
+    cuenta.setDinero(cuenta.getDinero() + montoDeposito);
+
+    // Mostrar si el deposito fue realizado 
+    System.out.println("| Depósito exitoso!");
+    System.out.println("| Nuevo saldo: " + cuenta.getDinero());
     }
         
 
     private static void retirarDinero() {
-        
+    System.out.println("|  ------------------------------------------------------------------- |");
+    System.out.println("|                              Retirar Dinero                          |");
+    System.out.println("|  ------------------------------------------------------------------  |");
+        // Iniciamos sesión 
+    CuentaBancaria cuenta = iniciarSesion();
+
+    System.out.println("| Ingrese monto a retirar:");
+    double montoRetiro = scanner.nextDouble();
+
+    // Confirmamos que hay fondos suficientes
+    if(cuenta.getDinero() < montoRetiro) {
+    System.out.println("| Fondos insuficientes");
+    return; 
+  }
+
+    // Restamos monto retirado del saldo
+    cuenta.setDinero(cuenta.getDinero() - montoRetiro);
+
+    // Mostrar si el retiro fue realizado
+    System.out.println("| Retiro exitoso!");
+    System.out.println("| Nuevo saldo: " + cuenta.getDinero());
     }
         
    
 
     private static void transferirDinero() {
-       
+    System.out.println("|  ------------------------------------------------------------------- |");
+    System.out.println("|                              Transferir Dinero                       |");
+    System.out.println("|  ------------------------------------------------------------------  |");
+       // Iniciamos sesión 
+    CuentaBancaria cuentaOrigen = iniciarSesion();
+
+   System.out.println("| Ingrese nombre de usuario de cuenta destino:");
+   String usuarioDestino = scanner.next();
+
+   // Buscamos cuenta para transferirle 
+   CuentaBancaria cuentaDestino = buscarCuentaPorUsuario(usuarioDestino);
+
+    if(cuentaDestino == null) {
+    System.out.println("| Cuenta destino no encontrada");
+    return;
+  }
+
+   System.out.println("| Ingrese monto a transferir:");
+   double montoTransferencia = scanner.nextDouble();
+
+   // Confirmamos si hay monto suficiente
+   if(cuentaOrigen.getDinero() < montoTransferencia) {
+   System.out.println("| Fondos insuficientes");
+   return;
+  }
+
+   // Restamos el monto de la cuenta con la que transferimos
+   cuentaOrigen.setDinero(cuentaOrigen.getDinero() - montoTransferencia);
+
+    
+   cuentaDestino.setDinero(cuentaDestino.getDinero() + montoTransferencia);
+
+   // Mostramos transferencia realizada
+   System.out.println("| Transferencia exitosa!");
+   System.out.println("| Saldo restante en la cuenta: " + cuentaOrigen.getDinero());
+
     }
 
 
