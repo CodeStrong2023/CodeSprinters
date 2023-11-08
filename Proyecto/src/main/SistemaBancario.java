@@ -1,8 +1,9 @@
 package main;
-import OpcionesMenu.CuentaBancaria;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.Scanner;
+import clases.CuentaBancaria;
 import java.util.ArrayList;
 
 public class SistemaBancario{
@@ -53,7 +54,7 @@ public class SistemaBancario{
         System.out.println("|  ------------------------------------------------------------------  |");
         System.out.println("| |                      6. Salir                                    | |");
         System.out.println("|  ------------------------------------------------------------------  |");
-        System.out.println("|  |                 Seleccione una opcion  del 1 al 6               | |");
+        System.out.println("| |                 Seleccione una opcion  del 1 al 6                | |");
         System.out.println("|  ------------------------------------------------------------------  |");
     }
 
@@ -62,24 +63,25 @@ public class SistemaBancario{
     private static void procesarOpcion(int opcion) {
         switch (opcion) {
             case 1:
-                // Verificación de robot y creación de cuenta
-                if (verificacionRobot()) {
-                    crearCuenta();
-                }
+                crearCuenta();
+                esperarTecla();
                 break;
             case 2:
                 depositarDinero();
+                esperarTecla();
                 break;
             case 3:
                 retirarDinero();
+                esperarTecla();
                 break;
             case 4:
                 transferirDinero();
+                esperarTecla();
                 break;
             case 5:
-                if (verificacionRobot()) {
-                    mostrarDatosCuenta();
-                }
+               
+                mostrarDatosCuenta();
+                esperarTecla();
                 break;
             case 6:
                 System.out.println("|  ------------------------------------------------------------------- |");
@@ -127,12 +129,6 @@ public class SistemaBancario{
     return false;
     }
     
-    // Métodos para las funcionalidades
-    private static boolean verificacionRobot() {
-        // Implementación de la verificación de robot
-        return true; // Por ahora siempre retorna true
-    }
-    
     // Metodo para verigicar el largo de los DNI
     private static boolean esDNIValido(String dni) {
     if (dni.matches("\\d{7,8}")) {
@@ -152,12 +148,23 @@ public class SistemaBancario{
     return edad >= 16 && edad < 100;
     
     }
+    private static void esperarTecla() {
+        System.out.println("|  ------------------------------------------------------------------- |");
+        System.out.println("|              Presione cualquier tecla para continuar...              |");
+        System.out.println("|  ------------------------------------------------------------------- |");
+
+        try {
+            System.in.read(); // Esperar a que el usuario presione cualquier tecla
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
-    // Metodo para inicializar seccion 
+    // Metodo para inicializar sesión 
     /*
-     * Con este podremos iniciar sesion a una cuenta especifica 
+     * Con este podremos iniciar sesion a una cuenta específica 
      * Lo utilizaremos en muchas opciones 
-     * Conciste en un Do que pide un nombre de usuario 
+     * Consiste en un Do que pide un nombre de usuario 
      * y lo ingresa al Metodo buscarCuentaPorUsuario 
      * si encuentra un usuario continua pidiendo la contraseña
      * si no la encuentra avisa que el usuario es incorrecto y inicia nuevamente 
@@ -218,10 +225,6 @@ public class SistemaBancario{
         return null; // Si no se encuentra la cuenta
     }
     
-     //método ingreso de dinero mayor que cero
-     private static boolean esMontoValido(double dinero) {
-     return dinero > 0;
-     }
  
 
    public static void crearCuenta() {
@@ -320,11 +323,7 @@ public class SistemaBancario{
     
     // Le decimos al Usuario que su cuenta fue creada con exito 
     System.out.println(cuenta.toString());
-    System.out.println("|  ------------------------------------------------------------------- |");
-    System.out.println("|              Presione cualquier tecla para continuar...              |");
-    System.out.println("|  ------------------------------------------------------------------- |");
- 
-    scanner.nextLine(); // Consumir el \n restante después de scanner.nextInt()
+
 }
 
     private static void depositarDinero() {
@@ -340,6 +339,10 @@ public class SistemaBancario{
     // Confirmamos que el monto no sea 0
     if(montoDeposito <= 0) {
     System.out.println("| Monto inválido");
+        System.out.println("|  ------------------------------------------------------------------- |");
+    System.out.println("|              Presione cualquier tecla para continuar...              |");
+    System.out.println("|  ------------------------------------------------------------------- |");
+ 
     return;
  }
 

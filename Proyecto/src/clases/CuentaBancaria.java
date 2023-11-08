@@ -1,9 +1,8 @@
 
-package OpcionesMenu;
+package clases;
 
 public class CuentaBancaria {
 
-    
     private String nombreUsuario;
     private String contra;
     private String nombreReal;
@@ -14,14 +13,10 @@ public class CuentaBancaria {
     private String cbu;
     private double saldo;
     
-    
-    
-    
     // Constructor por defecto
     public CuentaBancaria() {
     }
     // Constructor completo
-    
     public CuentaBancaria( String nombreUsuario, String contra, String nombreReal, String DNI, String sexo, int edad, double dinero,double saldo, String cbu) {
         this.nombreUsuario = nombreUsuario;
         this.contra = contra;
@@ -74,16 +69,12 @@ public class CuentaBancaria {
     }
     
     // Setters
-    
     public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
     }
     
     public void setContra(String contra) {
         this.contra = contra;
-    }
-    public static void setcbu(String CBU) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     public void setNombreReal(String nombreReal) {
