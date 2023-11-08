@@ -151,6 +151,7 @@ public class SistemaBancario{
     private static boolean esEdadValida(int edad) {
     return edad >= 16 && edad < 100;
     }
+    
     // Metodo para limpiar pantalla 
     public static void clearScreen() {
     System.out.print("\033[H\033[2J");
@@ -222,12 +223,6 @@ public class SistemaBancario{
         return null; // Si no se encuentra la cuenta
     }
     
-     //método ingreso de dinero mayor que cero
-     private static boolean esMontoValido(double dinero) {
-     return dinero > 0;
-     }
- 
-
    public static void crearCuenta() {
     System.out.println("|  ------------------------------------------------------------------- |");
     System.out.println("|                              Crear cuenta                            |");
@@ -336,27 +331,21 @@ public class SistemaBancario{
     System.out.println("|                              Depositar Dinero                        |");
     System.out.println("|  ------------------------------------------------------------------  |");
     
-/*     // Mostrar el saldo
-    System.out.println("Su Saldo Actual es :" + saldo + "Dolares");
+     // Llamamos al metodo Cuenta 
+     CuentaBancaria cuenta = iniciarSesion();
     
     // Pedimos el dinero a Depositar
     System.out.println("| Ingrese Cantidad de Dinero a depositar: ");
     double dinero = scanner.nextInt();
+    dinero = dinero +
+    cuenta.getDinero();
+    cuenta.setDinero(dinero);
     
-    // En el ciclo While indicamos que el valor dado por el usuario debe ser mayor a cero
-    while (!esMontoValido(dinero)) {
-    if (dinero < 0) {
-        System.out.println("| La aplicación no acepta monto menores a cero.");
-        System.out.println("| Ingrese otro Monto a depositar : ");
-        dinero = scanner.nextInt();
-    } else {
-            saldo = saldo + dinero; 
-    }
-    // Mostramos el saldo final
-   System.out.println("Su Saldo Actual es :" + saldo + "Dolares");
-    } */
-    }
-        
+    System.out.println(" Su  dinero se deposito exitosamente ");
+    System.out.println(" El saldo en la cuenta es : " + dinero + " Dolares");
+    
+    } 
+    
 
     private static void retirarDinero() {
         
