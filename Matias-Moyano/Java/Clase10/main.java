@@ -27,7 +27,11 @@ public class main {
         //numero = 11; //error: no se puede modificar el valor de una variable final
         System.out.println("numero = " + numero);
 
-        //ejemplo de uso de la palabra final en metodos
+        final Persona persona1 = new Persona();
+        persona1.setNombre("Juan");
+        System.out.println("persona1 = " + persona1.getNombre());
+        persona1.setNombre("Carlos");
+        System.out.println("persona1 = " + persona1.getNombre());
         
 
     }
