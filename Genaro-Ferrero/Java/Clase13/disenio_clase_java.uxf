@@ -1,0 +1,39 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>0</x><y>30</y><w>210</w><h>30</h></coordinates><panel_attributes>Un dominio, dirección</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>60</y><w>350</w><h>580</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>120</y><w>210</w><h>210</h></coordinates><panel_attributes>Orden
+--
+-idOrden
+-producto[]:producto
+-contadorOrdenes:int
+Max-Productos:int = 10
+--
++Orden()
++agregarProducto(producto:Produccion)
++calcularTotal():double
++mostrarOrden():void
+--
+Responsabilidades
+--Crear objetos orden
+--Administrar los productos </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>360</y><w>210</w><h>260</h></coordinates><panel_attributes>Producto 
+--
+-idProducto: Int
+-nombre: String
+-Precio:double
+-contadorProductos:int
+--
+-Producto()
++Producto(nombre: String, precio:double
++getIdProducto():int
++getNombre():String
++setNombre(nombre:string):void
++getPrecio():double
++setPrecio(precio:double):void
+´tostring():string
+--
+Responsabilidades
+- Crear objetos de tipo producto</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>20</y><w>430</w><h>40</h></coordinates><panel_attributes>lt=&lt;.&gt;
+</panel_attributes><additional_attributes>410;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>650</x><y>60</y><w>330</w><h>180</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>30</y><w>130</w><h>30</h></coordinates><panel_attributes>Test Ventas</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>110</x><y>320</y><w>200</w><h>60</h></coordinates><panel_attributes>lt=&lt;.
+Un producto agrega una orden</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>UMLClass</id><coordinates><x>680</x><y>80</y><w>270</w><h>130</h></coordinates><panel_attributes>VentasTest
+--
++main(arg:String[]:void
+--
+Resonsabilidades
+-Ejecutar la prueba de la aplicacion de ventas</panel_attributes><additional_attributes></additional_attributes></element></diagram>
