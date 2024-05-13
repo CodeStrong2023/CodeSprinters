@@ -1,0 +1,22 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>450</x><y>90</y><w>210</w><h>140</h></coordinates><panel_attributes>Persona
+--
+
+-nombre : str
+-edad : int
+
+--
+
+mostrar_detalle()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>380</y><w>210</w><h>90</h></coordinates><panel_attributes>persona1: Persona
+--
+
+-nombre : str = "Ariel"
+-edad : int = 40
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>670</x><y>380</y><w>210</w><h>90</h></coordinates><panel_attributes>persona2: Persona
+--
+
+-nombre : str = "Osvaldo"
+-edad : int = 4
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>220</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>300</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>300</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>290</y><w>480</w><h>40</h></coordinates><panel_attributes>lt=.
+ Instance of                                          Instance of </panel_attributes><additional_attributes>10;20;460;20</additional_attributes></element></diagram>

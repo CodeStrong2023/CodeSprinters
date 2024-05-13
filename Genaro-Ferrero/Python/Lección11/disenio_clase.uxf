@@ -1,0 +1,17 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>110</x><y>180</y><w>210</w><h>100</h></coordinates><panel_attributes>Orden
+--
++ contador_ordenes : int &lt;&lt;class variables &gt;&gt;
+- id_orden: int
+-producto: &lt;&lt;Producto list&gt;&gt;
+--
++__str__()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>180</y><w>210</w><h>110</h></coordinates><panel_attributes>Prodcuto	
+--
++ contador_productos : int &lt;&lt;class variables &gt;&gt;
+- id_producto: int
+-nombre: str
+- precio: float
+--
++__str__()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>210</y><w>320</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;.
+agregates</panel_attributes><additional_attributes>10;20;300;20</additional_attributes></element></diagram>
